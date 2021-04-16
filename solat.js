@@ -4,10 +4,6 @@ const express = require('express')
 const app = express()
 const port = 3000
 
-app.get('/', (req, res) => {
-  res.send('Hello World!')
-})
-
 app.get('/', (req, res => {
 const url = `https://m.dream.co.id/jadwal-salat/bandung`
 const resp = await axios.get(url)
@@ -26,4 +22,5 @@ hasil.push({ daerah, tanggal, shubuh, dzuhur, ashar, maghrib, isya})
 res.send(hasil) 
 }) 
 app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`)
+  console.log(`app listening at http://localhost:${port}`)
+}) 
