@@ -4,7 +4,7 @@ const express = require('express')
 const app = express()
 const port = 3000
 
-app.get('/', await(req, res) => {
+app.get('/', async(req, res) => {
 const hasil = []
 const url = `https://m.dream.co.id/jadwal-salat/bandung`
 const resp = await axios.get(url)
