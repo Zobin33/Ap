@@ -19,7 +19,6 @@ const ashar = $(a).eq(3).text()
 const maghrib = $(a).eq(4).text()
 const isya = $(a).eq(5).text()
 hasil.push({ daerah, tanggal, shubuh, dzuhur, ashar, maghrib, isya})
-}) 
 res.send(hasil)
 }) 
 app.listen(port, () => {
