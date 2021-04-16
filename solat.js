@@ -4,9 +4,9 @@ const express = require('express')
 const app = express()
 const port = 3000
 
-app.get('/', async(req, res => {
+app.get('/', (req, res => {
 const url = `https://m.dream.co.id/jadwal-salat/bandung`
-const resp = await axios.get(url)
+axios.get(url).then((resp) => {
 const $ = cheerio.load(resp.data)
 const a = $('table').find('tbody > tr > td')
 hasil = []
@@ -20,6 +20,7 @@ const maghrib = $(a).eq(4).text()
 const isya = $(a).eq(5).text()
 hasil.push({ daerah, tanggal, shubuh, dzuhur, ashar, maghrib, isya})
 res.send(hasil) 
+}) 
 }) 
 app.listen(port, () => {
   console.log(`app listening at http://localhost:${port}`)
