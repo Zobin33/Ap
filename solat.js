@@ -4,10 +4,10 @@ const express = require('express')
 const app = express()
 const port = 3000
 
-app.get('/', (req, res => {
+app.get('/', await(req, res) => {
 const hasil = []
 const url = `https://m.dream.co.id/jadwal-salat/bandung`
-axios.get(url).then((resp) => {
+const resp = await axios.get(url)
 const $ = cheerio.load(resp.data)
 const a = $('table').find('tbody > tr > td')
 const emror = "_[ ! ] Error Daerah Tidak DiTemukan_"
