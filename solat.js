@@ -1,10 +1,17 @@
 const axios = require('axios')
 const cheerio = require('cheerio')
+const express = require('express')
+const app = express()
+const port = 3000
 
-const jadwalSolat = async(tempat) => {
-const url = `https://m.dream.co.id/jadwal-salat/${tempat}`
-const res = await axios.get(url)
-const $ = cheerio.load(res.data)
+app.get('/', (req, res) => {
+  res.send('Hello World!')
+})
+
+app.get('/', (req, res => {
+const url = `https://m.dream.co.id/jadwal-salat/bandung`
+const resp = await axios.get(url)
+const $ = cheerio.load(resp.data)
 const a = $('table').find('tbody > tr > td')
 hasil = []
 const emror = "_[ ! ] Error Daerah Tidak DiTemukan_"
@@ -16,7 +23,7 @@ const ashar = $(a).eq(3).text()
 const maghrib = $(a).eq(4).text()
 const isya = $(a).eq(5).text()
 hasil.push({ daerah, tanggal, shubuh, dzuhur, ashar, maghrib, isya})
-return hasil
-}
-
-module.exports = { jadwalSolat }
+res.send(hasil) 
+}) 
+app.listen(port, () => {
+  console.log(`Example app listening at http://localhost:${port}`)
