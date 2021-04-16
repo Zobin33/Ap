@@ -2,9 +2,9 @@
  "name": "Zbin-Wabot",
  "version": "1.0.0",
  "description": "Bot Wea Mudah Digunakan",
- "main": "main.js",
+ "main": "solat.js",
  "scripts": {
-  "start": "node main.js"
+  "start": "node solat.js"
  },
  "dependencies": {
   "async": "^2.4.1",
